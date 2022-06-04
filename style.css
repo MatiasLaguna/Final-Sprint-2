@@ -1,0 +1,23 @@
+form {
+    margin: 2rem 3rem;
+}
+
+.container {
+    padding: 4rem 0;
+}
+
+.container h3 {
+    text-shadow: 1px 2px 3px rgb(115, 123, 134);
+}
+
+#list-p {
+    margin: 2rem;
+}
+
+.btn-close {
+    float: right;
+}
+
+#total {
+    margin: 2rem;
+}
