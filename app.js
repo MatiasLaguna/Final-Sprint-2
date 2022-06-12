@@ -1,13 +1,18 @@
 const inputName = document.getElementById("inputName");
 const inputCost = document.getElementById("inputCost");
 const list = document.getElementById("list-p");
+const div = document.getElementById("total");
+const divSubtotal = document.getElementById("subtotal");
 let ArrayPeople = [];
+let count = 0
 
-function validar() {
-    ArrayPeople.push([inputName.value, inputCost.value]);
+function agregarItem() {
+    count++
+    ArrayPeople.push([inputName.value, inputCost.value, count]);
     let li = document.createElement("li");
     li.classList.add("list-group-item");
-    li.innerText = ArrayPeople.at(-1)[0] + ": $" + ArrayPeople.at(-1)[1];
+    li.setAttribute("id", count)
+    li.textContent = ArrayPeople.at(-1)[0] + ": $" + ArrayPeople.at(-1)[1];
     li.append(closeButton());
     list.append(li);
     totalValue();
@@ -21,10 +26,8 @@ function closeButton() {
 }
 
 function deteleItem() {
-    const str = this.parentElement.textContent;
-    const name = str.slice(0, str.indexOf(":"));
-    ArrayPeople = ArrayPeople.filter((elem) => elem[0] !== name);
-    console.log(ArrayPeople);
+    const id = this.parentElement.id;
+    ArrayPeople = ArrayPeople.filter((elem) => elem[2] != id);
     this.parentElement.remove();
     totalValue();
 }
@@ -37,8 +40,6 @@ function totalValue() {
     }
 
     let subtotal = acum / ArrayPeople.length;
-    let div = document.getElementById("total");
-    let divSubtotal = document.getElementById("subtotal");
-    divSubtotal.innerText = "A pagar cada uno: $" + (subtotal ? subtotal : 0);
-    div.innerText = "Total: $" + (acum ? acum : 0);
+    divSubtotal.textContent = "A pagar cada uno: $" + (subtotal ? subtotal : 0);
+    div.textContent = "Total: $" + (acum ? acum : 0);
 }
