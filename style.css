@@ -2,6 +2,10 @@ form {
     margin: 2rem 3rem;
 }
 
+body {
+    max-width: 500px;
+}
+
 .container {
     padding: 4rem 0;
 }
@@ -19,5 +23,9 @@ form {
 }
 
 #total {
-    margin: 2rem;
+    margin: 0 2rem;
+}
+
+#subtotal {
+    margin: 0 2rem;
 }
